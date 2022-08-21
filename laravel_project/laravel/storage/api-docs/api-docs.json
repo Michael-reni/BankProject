@@ -1,0 +1,246 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel OpenApi Demo Documentation",
+        "contact": {
+            "email": "admin@admin.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8080/api",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/account/create_account": {
+            "post": {
+                "tags": [
+                    "BankingSystem"
+                ],
+                "summary": "create banking account",
+                "operationId": "c5853ba89d5e218ee9f84d7c5c6ccf5f",
+                "requestBody": {
+                    "description": "pass data to create account",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "User name",
+                                        "type": "string",
+                                        "example": "Jan"
+                                    },
+                                    "surname": {
+                                        "description": "User surname",
+                                        "type": "string",
+                                        "example": "Kowalski"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/account/add_to_balance/{uuid}": {
+            "put": {
+                "tags": [
+                    "BankingSystem"
+                ],
+                "summary": "Add money to account balance",
+                "operationId": "27ebca40663a992b44b0c030605b351f",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "this uuid is account number",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "description": "pass data to create account",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "value": {
+                                        "description": "Amount of money that will be added to account",
+                                        "type": "number",
+                                        "format": "double",
+                                        "example": "120.25"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/account/withdraw_from_balance/{uuid}": {
+            "put": {
+                "tags": [
+                    "BankingSystem"
+                ],
+                "summary": "withdraw money from account balance",
+                "operationId": "4081405b0191189e0906bc57c6f18bd0",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "this uuid is account number",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "description": "pass data to create account",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "value": {
+                                        "description": "Amount of money that will be withdraw from the account",
+                                        "type": "number",
+                                        "format": "double",
+                                        "example": "120.25"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/account/check_balance/{uuid}": {
+            "get": {
+                "tags": [
+                    "BankingSystem"
+                ],
+                "summary": "check account balance",
+                "operationId": "e24bcae92491778bbc9b860752fb44ca",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "this uuid is account number",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/account/check_history/{uuid}": {
+            "get": {
+                "tags": [
+                    "BankingSystem"
+                ],
+                "summary": "check account balance",
+                "operationId": "dc476cd135fdd1f713c89a23ff21d34b",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "this uuid is account number",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {},
+                            "application/xlsx": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        }
+    }
+}

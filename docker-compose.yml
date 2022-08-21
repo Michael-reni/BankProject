@@ -1,0 +1,58 @@
+version: '3'
+networks:
+ project_network:
+  
+  
+services:
+  swerwis_nginx_z_php:
+   image: webdevops/php-nginx:8.0
+   container_name: nginx_container
+   depends_on:
+   - postgres
+   ports:
+   - "8080:80"
+   
+   
+   volumes:
+   - ./laravel_project:/app
+   - ./vhost_config/vhost.conf:/opt/docker/etc/nginx/vhost.conf
+   networks:
+    - project_network
+
+
+
+  postgres:
+   image: postgres:14.1-alpine
+   container_name: postGres
+   restart: unless-stopped
+   tty: true
+   ports:
+   - "5435:5432"
+   volumes:
+   - ./PostGres_data:/var/lib/postgresql/data
+
+   environment:
+    POSTGRES_PASSWORD: secret 
+    PGDATA: /var/lib/postgresql/data/pgdata 
+   networks:
+    - project_network
+
+  postgres_for_testing:
+   image: postgres:14.1-alpine
+   container_name: postGres_for_testing
+   restart: unless-stopped
+   tty: true
+   ports:
+   - "5436:5432"
+   volumes:
+   - ./PostGres_data_for_testing:/var/lib/postgresql/data
+
+   environment:
+    POSTGRES_PASSWORD: secret_test 
+    PGDATA: /var/lib/postgresql/data/pgdata 
+    POSTGRES_DB: postgres_for_testing
+   networks:
+    - project_network
+volumes:
+  PostGres_data:
+    driver: local
