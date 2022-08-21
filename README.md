@@ -1,5 +1,5 @@
 #### Open terminal. Every command that needs to be executed in terminal starts with number and a dot
-1. cd /path/to/project/ 
+1. cd /path/to/project/BankProject-master or  cd /path/to/project/BankProject
 #### Laravel project lies in laravel_project/laravel. I recommend to open it in some IDE like Visual Studio Code right now  
 #### Now we need to start a docker project  
 2. docker-compose up -d 
@@ -15,6 +15,7 @@
 8. php artisan config:cache
 9. php artisan l5-swagger:generate 
 #### Now you can interact with documentation written in Swagger. Just copy/paste this link to your browser: http://127.0.0.1:8080/api/documentation 
+#### If you explore well enough, you can even unlock a secret option to download Account History to the xlsx File :-) Give it a try 
 #### If you want to start the test 
 10.  php artisan config:clear
 11.  php artisan test --testsuite=Feature
