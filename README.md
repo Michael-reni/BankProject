@@ -4,7 +4,7 @@
  Now we need to start a docker project  
 2. docker-compose up -d
   Good, let's get inside the container and instal the project dependencies, create .env and run migrations to database 
-3. docker exec -it nginx_container bash
+4. docker exec -it nginx_container bash
   Now we are inside the container
 4. cd app/laravel/
 5. composer install
