@@ -16,4 +16,5 @@
 9. php artisan l5-swagger:generate 
 #### Now you can interact with documentation written in Swagger. Just copy/paste this link to your browser: http://127.0.0.1:8080/api/documentation 
 #### If you want to start the test 
-10.  php artisan test --testsuite=Feature
+10.  php artisan config:clear
+11.  php artisan test --testsuite=Feature
