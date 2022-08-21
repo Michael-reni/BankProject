@@ -1,9 +1,9 @@
   Open terminal. Every command that needs to be executed in terminal starts with number and a dot
 1. cd /path/to/project/ 
-Laravel project lies in laravel_project/laravel. I recommend to open it in some IDE like Visual Studio Code right now  
-Now we need to start a docker project  
+# Laravel project lies in laravel_project/laravel. I recommend to open it in some IDE like Visual Studio Code right now  
+# Now we need to start a docker project  
 2. docker-compose up -d 
-Good, let's get inside the container and instal the project dependencies, create .env and run migrations to database 
+# Good, let's get inside the container and instal the project dependencies, create .env and run migrations to database 
 4. docker exec -it nginx_container bash
 Now we are inside the container
 4. cd app/laravel/
